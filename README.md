@@ -48,8 +48,8 @@ DB_PASSWORD=your_password
 ### 4. Create the database
 Create a MySQL database named `clothing_erp` (or whatever you set in `.env`):
 ```sql
-CREATE DATABASE clothing_erp;
-```
+xCREATE DATABASE clothing_erp;
+```n 
 
 ### 5. Run migrations and seed demo data
 ```bash
@@ -70,9 +70,9 @@ Visit **http://localhost:8000** in your browser.
 
 | Role     | Email                       | Password |
 |----------|-----------------------------|----------|
-| Admin    | admin@clothingerp.test      | password |
-| Cashier  | cashier@clothingerp.test    | password |
-| Manager  | manager@clothingerp.test    | password |
+| Admin    | admin@clothingerp.test      |Admin@1234|
+| Cashier  | cashier@clothingerp.test    |cashier@1234|
+| Manager  | manager@clothingerp.test    |manager@1234|
 
 ## Role Permissions
 
