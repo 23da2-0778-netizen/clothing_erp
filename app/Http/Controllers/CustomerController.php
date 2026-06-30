@@ -37,9 +37,11 @@ class CustomerController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'phone' => ['nullable', 'string', 'max:20'],
-            'email' => ['nullable', 'email', 'max:255'],
+            'name' => ['required', 'string', 'min:2', 'max:255'],
+            'phone' => ['nullable', 'string', 'max:20', 'unique:customers,phone', 'regex:/^([0-9\s\-\+\(\)]*)$/'],
+            'email' => ['nullable', 'email', 'max:255', 'unique:customers,email'],
+        ], [
+            'phone.regex' => 'The phone number format is invalid (only numbers, spaces, dashes, parentheses, and plus sign are allowed).',
         ]);
 
         Customer::create($validated);
@@ -68,9 +70,22 @@ class CustomerController extends Controller
     public function update(Request $request, Customer $customer): RedirectResponse
     {
         $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'phone' => ['nullable', 'string', 'max:20'],
-            'email' => ['nullable', 'email', 'max:255'],
+            'name' => ['required', 'string', 'min:2', 'max:255'],
+            'phone' => [
+                'nullable', 
+                'string', 
+                'max:20', 
+                'unique:customers,phone,' . $customer->customer_id . ',customer_id', 
+                'regex:/^([0-9\s\-\+\(\)]*)$/'
+            ],
+            'email' => [
+                'nullable', 
+                'email', 
+                'max:255', 
+                'unique:customers,email,' . $customer->customer_id . ',customer_id'
+            ],
+        ], [
+            'phone.regex' => 'The phone number format is invalid (only numbers, spaces, dashes, parentheses, and plus sign are allowed).',
         ]);
 
         $customer->update($validated);

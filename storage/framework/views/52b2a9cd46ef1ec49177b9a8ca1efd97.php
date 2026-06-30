@@ -10,7 +10,8 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>"
-           id="product_name" name="product_name" value="<?php echo e(old('product_name', $product?->product_name)); ?>" required>
+           id="product_name" name="product_name" value="<?php echo e(old('product_name', $product?->product_name)); ?>" 
+           placeholder="e.g. Premium Cotton T-Shirt" required minlength="2" maxlength="255">
     <?php $__errorArgs = ['product_name'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -19,6 +20,7 @@ $message = $__bag->first($__errorArgs[0]); ?><div class="invalid-feedback"><?php
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+    <div class="form-text">Minimum 2 characters, must be a unique product name.</div>
 </div>
 
 <div class="mb-3">
@@ -32,7 +34,7 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>"
            id="category" name="category" value="<?php echo e(old('category', $product?->category)); ?>"
-           list="categorySuggestions" placeholder="e.g. Men, Women, Kids, Accessories" required>
+           list="categorySuggestions" placeholder="e.g. Men, Women, Kids, Accessories" required maxlength="255">
     <datalist id="categorySuggestions">
         <option value="Men">
         <option value="Women">
@@ -49,6 +51,7 @@ $message = $__bag->first($__errorArgs[0]); ?><div class="invalid-feedback"><?php
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+    <div class="form-text">Choose from suggestions or type a custom category.</div>
 </div>
 
 <div class="row">
@@ -62,7 +65,8 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>"
-               id="price" name="price" value="<?php echo e(old('price', $product?->price)); ?>" required>
+               id="price" name="price" value="<?php echo e(old('price', $product?->price)); ?>" 
+               placeholder="0.00" required>
         <?php $__errorArgs = ['price'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -71,6 +75,7 @@ $message = $__bag->first($__errorArgs[0]); ?><div class="invalid-feedback"><?php
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+        <div class="form-text">Must be a positive number or zero.</div>
     </div>
     <div class="col-md-6 mb-3">
         <label for="quantity" class="form-label">Stock Quantity</label>
@@ -82,7 +87,8 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>"
-               id="quantity" name="quantity" value="<?php echo e(old('quantity', $product?->quantity)); ?>" required>
+               id="quantity" name="quantity" value="<?php echo e(old('quantity', $product?->quantity)); ?>" 
+               placeholder="0" required>
         <?php $__errorArgs = ['quantity'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -91,6 +97,7 @@ $message = $__bag->first($__errorArgs[0]); ?><div class="invalid-feedback"><?php
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+        <div class="form-text">Must be a positive integer or zero.</div>
     </div>
 </div>
 <?php /**PATH C:\Users\MSI PC\Desktop\clothing-erp\clothing-erp\resources\views/products/_form.blade.php ENDPATH**/ ?>
